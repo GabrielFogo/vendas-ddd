@@ -1,6 +1,22 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3202619e_002D4587_002D469a_002Da3b2_002D6159ae18a227/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.UnitTest1.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.ValueObjects.DeliveryAddressTests.Create_ShouldReturnDeliveryAddress_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.ValueObjects.DeliveryAddressTests.Create_ShouldReturnDeliveryAddress_WhenCepIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.ValueObjects.DeliveryAddressTests.AddressShouldBeEqualWhenHasTheSameValues&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.ValueObjects.DeliveryAddressTests.AddressShouldBeEqual_WhenHasTheSameValues&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.ValueObjects.DeliveryAddressTests.AddressShouldBeNotEquals_WhenHasTheDifferentValues&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.Create_ShouldCreateOrderItem_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.Create_ShouldNotCreateOrderItem_WhenDataIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.CalculateDiscount_ShouldCalculateDiscount_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.CalculateDiscount_ShouldNotCalculateDiscount_WhenDataIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.ApplyDiscount_ShouldCalculateDiscount_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.IncreaseQuantity_ShouldIncreaseQuantity_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.IncreaseQuantity_ShouldNotIncreaseQuantity_WhenDataIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.DecreaseQuantity_ShouldDecreaseQuantity_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.DecreaseQuantity_ShouldNotDecreaseQuantity_WhenDataIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.UpdateUnitPrice_ShouldUpdateUnitPrice_WhenDataIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.UpdateUnitPrice_ShouldNotUpdateUnitPrice_WhenDataIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::444BBF33-32D1-C287-FB1F-1BCDCC2B99B6::net10.0::Vendas.Domain.Tests.Entities.OrderItemTests.Equals_ShouldReturnTrue_WhenIdAreTheSame&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
