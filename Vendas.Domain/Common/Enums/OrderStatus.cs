@@ -1,4 +1,4 @@
-﻿namespace Vendas.Domain.Common.Enums.Orders;
+﻿namespace Vendas.Domain.Common.Enums;
 
 public enum OrderStatus
 {

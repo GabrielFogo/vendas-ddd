@@ -1,10 +1,13 @@
-﻿namespace Vendas.Domain.Common.Base;
+﻿using System.Collections.ObjectModel;
+using Vendas.Domain.Events;
+
+namespace Vendas.Domain.Common.Base;
 
 public abstract class Entity
 {
     public Guid Id { get; protected set; }
     public DateTime CreatedAt { get; protected set; }
-    public DateTime ModifiedAt { get; protected set; }
+    public DateTime? ModifiedAt { get; protected set; }
 
     protected Entity()
     {
@@ -43,4 +46,20 @@ public abstract class Entity
     {
         return !(left == right);
     }
+    
+    private readonly List<IDomainEvent> _domainEvents = [];
+    
+    public ReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+
+    protected void AddDomainEvent(IDomainEvent domainEvent)
+    {
+        _domainEvents.Add(domainEvent);
+    }
+
+    protected void RemoveDomainEvent(IDomainEvent domainEvent)
+    {
+        _domainEvents.Remove(domainEvent);
+    }
+    
+    protected void ClearDomainEvents() => _domainEvents.Clear();
 }
