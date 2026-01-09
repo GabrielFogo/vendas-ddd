@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Vendas.Domain.Common.Base;
 using Vendas.Domain.Common.Exceptions;
-using Vendas.Domain.Entities;
+using Vendas.Domain.Orders.Entities;
 
 namespace Vendas.Domain.Tests.Entities;
 
@@ -47,12 +47,12 @@ public class OrderItemTests
 
         act.Should().Throw<DomainException>().WithMessage(message);
     }
-    
+
     [Fact]
     public void ApplyDiscount_ShouldCalculateDiscount_WhenDataIsValid()
     {
         var item = CreateValidaItem(200m, 2);
-        
+
         item.ApplyDiscount(100m);
 
         item.Discount.Should().Be(100m);
@@ -67,7 +67,7 @@ public class OrderItemTests
     {
         var item = CreateValidaItem(200m, 2);
         var act = () => item.ApplyDiscount(discount);
-        
+
         act.Should().Throw<DomainException>().WithMessage(message);
     }
 
@@ -75,43 +75,43 @@ public class OrderItemTests
     public void IncreaseQuantity_ShouldIncreaseQuantity_WhenDataIsValid()
     {
         var item = CreateValidaItem(200m, 2);
-        
+
         item.IncreaseQuantity(1);
-        
+
         item.Quantity.Should().Be(3);
         item.TotalPrice.Should().Be(600m);
         item.ModifiedAt.Should().NotBe(null);
     }
-    
+
     [Fact]
     public void IncreaseQuantity_ShouldNotIncreaseQuantity_WhenDataIsInvalid()
     {
         var item = CreateValidaItem();
         var act = () => item.IncreaseQuantity(0);
         var exceptionMessage = "quantity must be positive";
-        
+
         act.Should().Throw<DomainException>(exceptionMessage);
     }
-    
+
     [Fact]
     public void DecreaseQuantity_ShouldDecreaseQuantity_WhenDataIsValid()
     {
         var item = CreateValidaItem(200m, 2);
-        
+
         item.DecreaseQuantity(1);
-        
+
         item.Quantity.Should().Be(1);
         item.TotalPrice.Should().Be(200m);
         item.ModifiedAt.Should().NotBe(null);
     }
-    
+
     [Fact]
     public void DecreaseQuantity_ShouldNotDecreaseQuantity_WhenDataIsInvalid()
     {
         var item = CreateValidaItem();
         var act = () => item.DecreaseQuantity(0);
         var exceptionMessage = "quantity must be positive";
-        
+
         act.Should().Throw<DomainException>(exceptionMessage);
     }
 
@@ -119,9 +119,9 @@ public class OrderItemTests
     public void UpdateUnitPrice_ShouldUpdateUnitPrice_WhenDataIsValid()
     {
         var item = CreateValidaItem(200m, 2);
-        
+
         item.UpdateUnitPrice(400m);
-        
+
         item.UnitPrice.Should().Be(400m);
         item.TotalPrice.Should().Be(800m);
         item.ModifiedAt.Should().NotBe(null);
@@ -133,19 +133,19 @@ public class OrderItemTests
         var item = CreateValidaItem();
         var act = () => item.UpdateUnitPrice(0);
         var exceptionMessage = "unit price must be positive";
-        
+
         act.Should().Throw<DomainException>(exceptionMessage);
     }
-    
+
     [Fact]
     public void Equals_ShouldReturnTrue_WhenIdAreTheSame()
     {
         var firstItem = CreateValidaItem();
         var secondItem = CreateValidaItem();
-        
+
         typeof(Entity).GetProperty(nameof(firstItem.Id))!.SetValue(secondItem, firstItem.Id);
-        
-        (firstItem==secondItem).Should().BeTrue();
+
+        (firstItem == secondItem).Should().BeTrue();
         firstItem.Equals(secondItem).Should().BeTrue();
     }
 }

@@ -4,17 +4,15 @@ public class DomainException : Exception
 {
     public DomainException()
     {
-        
     }
-    
-    public DomainException(string message): base(message)
+
+    public DomainException(string message) : base(message)
     {
-        
     }
-    
+
     public static void ThrowIf(bool condition, string message)
     {
-        if (condition) 
+        if (condition)
             throw new DomainException(message);
     }
 }

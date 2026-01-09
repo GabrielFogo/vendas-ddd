@@ -15,7 +15,7 @@ public class DeliveryAddressTests
         var city = "Berlin";
         var state = "TX";
         var country = "USA";
-        
+
         var address = DeliveryAddress.Create(
             cep,
             street,
@@ -23,7 +23,7 @@ public class DeliveryAddressTests
             city,
             state,
             country);
-        
+
         address.Should().NotBeNull();
         address.Cep.Should().Be(cep);
         address.Street.Should().Be(street);
@@ -44,13 +44,14 @@ public class DeliveryAddressTests
         var city = "Berlin";
         var state = "TX";
         var country = "USA";
-        
+
         var act = () => DeliveryAddress.Create(cep, street, neighborhood, city, state, country);
-        
+
         act
             .Should()
             .Throw<DomainException>()
-            .WithMessage("Invalid CEP");;
+            .WithMessage("Invalid CEP");
+        ;
     }
 
     [Fact]
@@ -62,7 +63,7 @@ public class DeliveryAddressTests
         var city = "Berlin";
         var state = "TX";
         var country = "USA";
-        
+
         var firstAddress = DeliveryAddress.Create(
             cep,
             street,
@@ -78,7 +79,7 @@ public class DeliveryAddressTests
             city,
             state,
             country);
-        
+
         firstAddress.Equals(secondAddress).Should().BeTrue();
         (firstAddress == secondAddress).Should().BeTrue();
     }

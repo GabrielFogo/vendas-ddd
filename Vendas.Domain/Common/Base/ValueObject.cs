@@ -3,7 +3,7 @@
 public abstract class ValueObject
 {
     protected abstract IEnumerable<object> GetEqualityComponents();
-    
+
     public override bool Equals(object? obj)
     {
         if (obj is null || obj.GetType() != GetType())
@@ -23,9 +23,14 @@ public abstract class ValueObject
             .Select(x => x?.GetHashCode() ?? 0)
             .Aggregate((x, y) => x ^ y);
     }
-    
-    public static bool operator ==(ValueObject left, ValueObject right)
-            => left?.Equals(right) ?? right is null;
 
-    public static bool operator !=(ValueObject left, ValueObject right) => !(left == right);
+    public static bool operator ==(ValueObject left, ValueObject right)
+    {
+        return left?.Equals(right) ?? right is null;
+    }
+
+    public static bool operator !=(ValueObject left, ValueObject right)
+    {
+        return !(left == right);
+    }
 }

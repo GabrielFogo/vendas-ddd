@@ -14,12 +14,12 @@ public abstract class Entity
         Id = Guid.NewGuid();
         CreatedAt = DateTime.UtcNow;
     }
-    
+
     protected Entity(Guid id)
     {
         Id = id;
     }
-    
+
     protected void SetModifiedAt()
     {
         ModifiedAt = DateTime.UtcNow;
@@ -28,7 +28,7 @@ public abstract class Entity
     public override bool Equals(object? obj)
     {
         if (obj is not Entity otherEntity) return false;
-        
+
         return ReferenceEquals(this, obj) || Id.Equals(otherEntity.Id);
     }
 
@@ -46,9 +46,9 @@ public abstract class Entity
     {
         return !(left == right);
     }
-    
+
     private readonly List<IDomainEvent> _domainEvents = [];
-    
+
     public ReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
     protected void AddDomainEvent(IDomainEvent domainEvent)
@@ -60,6 +60,9 @@ public abstract class Entity
     {
         _domainEvents.Remove(domainEvent);
     }
-    
-    protected void ClearDomainEvents() => _domainEvents.Clear();
+
+    protected void ClearDomainEvents()
+    {
+        _domainEvents.Clear();
+    }
 }
