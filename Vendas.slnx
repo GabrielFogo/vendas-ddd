@@ -1,8 +1,12 @@
 <Solution>
     <Folder Name="/src/">
-        <Project Path="Vendas.Domain/Vendas.Domain.csproj"/>
+        <Project Path="Vendas.API/Vendas.API.csproj" />
+        <Project Path="Vendas.Application/Vendas.Application.csproj" />
+        <Project Path="Vendas.Blazor/Vendas.Blazor.csproj" />
+        <Project Path="Vendas.Domain/Vendas.Domain.csproj" />
+        <Project Path="Vendas.Infra/Vendas.Infra.csproj" />
     </Folder>
     <Folder Name="/tests/">
-        <Project Path="Vendas.Domain.Tests/Vendas.Domain.Tests.csproj"/>
+        <Project Path="Vendas.Domain.Tests/Vendas.Domain.Tests.csproj" />
     </Folder>
 </Solution>
