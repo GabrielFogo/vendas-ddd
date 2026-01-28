@@ -141,7 +141,7 @@ public sealed class Order : AggregateRoot
         );
     }
 
-    public void SetAsInSeparation()
+    public void MarkAsInSeparation()
     {
         Guard.Against<DomainException>(
             Status != OrderStatus.PaymentConfirmed,
@@ -152,7 +152,7 @@ public sealed class Order : AggregateRoot
         SetModifiedAt();
     }
 
-    public void SetAsSent()
+    public void MarkAsSent()
     {
         Guard.Against<DomainException>(
             Status != OrderStatus.InSeparation,
@@ -164,7 +164,7 @@ public sealed class Order : AggregateRoot
         AddDomainEvent(new OrderSentEvent(Id, CustomerId, DeliveryAddress));
     }
 
-    public void SetAsDelivered()
+    public void MarkAsDelivered()
     {
         Guard.Against<DomainException>(
             Status != OrderStatus.Sent,
@@ -192,5 +192,11 @@ public sealed class Order : AggregateRoot
             Status,
             reason)
         );
+    }
+
+    public void UpdateDeliveryAddress(DeliveryAddress address)
+    {
+        DeliveryAddress = address;
+        SetModifiedAt();
     }
 }

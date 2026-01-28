@@ -3,21 +3,15 @@ using Vendas.Domain.Events;
 
 namespace Vendas.Domain.Common.Base;
 
-public abstract class Entity
+public abstract class Entity(Guid id)
 {
-    public Guid Id { get; protected set; }
+    public Guid Id { get; protected set; } = id;
     public DateTime CreatedAt { get; protected set; }
     public DateTime? ModifiedAt { get; protected set; }
 
-    protected Entity()
+    protected Entity() : this(Guid.NewGuid())
     {
-        Id = Guid.NewGuid();
         CreatedAt = DateTime.UtcNow;
-    }
-
-    protected Entity(Guid id)
-    {
-        Id = id;
     }
 
     protected void SetModifiedAt()

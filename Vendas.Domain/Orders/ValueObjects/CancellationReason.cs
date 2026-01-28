@@ -17,7 +17,7 @@ public sealed class CancellationReason : ValueObject
         { CancellationReasonCode.Other, "Other reason" }
     };
 
-    private CancellationReason(CancellationReasonCode code)
+    public CancellationReason(CancellationReasonCode code)
     {
         Code = code;
         Description = StandardReasons[code];
