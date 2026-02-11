@@ -2,7 +2,7 @@
 
 namespace Vendas.Domain.Common.Validation;
 
-internal static class Guard
+public static class Guard
 {
     public static void AgainstEmptyGuid(Guid id, string paramName)
     {
