@@ -57,9 +57,9 @@ public sealed class Product : Entity
     public void ChangeName(ProductName newName)
     {
         Guard.AgainstNull(newName, nameof(newName));
-        
+
         Name = newName;
-        
+
         SetModifiedAt();
     }
 
@@ -68,9 +68,9 @@ public sealed class Product : Entity
         Guard.AgainstNull(price, nameof(price));
 
         var oldPrice = Price.Value;
-        
+
         Price = price;
-        
+
         SetModifiedAt();
         AddDomainEvent(new ProductPriceChangedEvent(Id, oldPrice, price.Value));
     }
@@ -78,16 +78,16 @@ public sealed class Product : Entity
     public void ChangeCategoryId(Guid newCategoryId)
     {
         Guard.AgainstEmptyGuid(newCategoryId, nameof(newCategoryId));
-        
+
         CategoryId = newCategoryId;
-        
+
         SetModifiedAt();
     }
 
     public void ChangeDescription(string? description)
     {
         Description = description?.Trim();
-        
+
         SetModifiedAt();
     }
 
@@ -95,19 +95,19 @@ public sealed class Product : Entity
     {
         Guard.AgainstNullOrWhiteSpace(reason, nameof(reason));
         Guard.Against<DomainException>(Stock + quantity < 0, "Stock must be positive");
-        
+
         Stock += quantity;
-        
+
         SetModifiedAt();
         AddDomainEvent(new StockChangedEvent(Id, quantity, reason));
     }
-    
+
     public void Activate()
     {
         Guard.Against<DomainException>(Status == ProductStatus.Active, "Product status must be Inactive");
-        
+
         Status = ProductStatus.Active;
-        
+
         SetModifiedAt();
         AddDomainEvent(new ProductActiveEvent(Id));
     }
@@ -115,9 +115,9 @@ public sealed class Product : Entity
     public void Inactivate()
     {
         Guard.Against<DomainException>(Status == ProductStatus.Inactive, "Product status must be Active");
-        
+
         Status = ProductStatus.Inactive;
-        
+
         SetModifiedAt();
         AddDomainEvent(new ProductInactivateEvent(Id));
     }
@@ -125,11 +125,11 @@ public sealed class Product : Entity
     public void AddImage(ProductImage image)
     {
         Guard.AgainstNull(image, nameof(image));
-        Guard.Against<DomainException>(_images.Any(i => i.Order == image.Order), 
+        Guard.Against<DomainException>(_images.Any(i => i.Order == image.Order),
             "Image order must be unique");
-        
+
         _images.Add(image);
-        
+
         SetModifiedAt();
         AddDomainEvent(new ImageAddEvent(Id, image.Url, image.Order));
     }

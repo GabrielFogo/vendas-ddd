@@ -18,8 +18,8 @@ public sealed class Customer : AggregateRoot
     public CustomerStatus Status { get; private set; }
     public MaritalStatus MaritalStatus { get; private set; }
     public Gender Gender { get; private set; }
-    
-    private readonly List<Address> _addresses = new ();
+
+    private readonly List<Address> _addresses = new();
     public IReadOnlyCollection<Address> Addresses => _addresses.AsReadOnly();
 
     public Customer(
@@ -32,7 +32,7 @@ public sealed class Customer : AggregateRoot
         MaritalStatus maritalStatus = MaritalStatus.Unknown)
     {
         Validate(name, cpf, email, phone, mainAddress);
-        
+
         Name = name;
         Cpf = cpf;
         Email = email;
@@ -41,42 +41,42 @@ public sealed class Customer : AggregateRoot
         Address = mainAddress;
         MaritalStatus = maritalStatus;
         Gender = gender;
-        
+
         _addresses.Add(mainAddress);
-        
+
         MainAddressId = mainAddress.Id;
-        
+
         AddDomainEvent(new CustomerRegisterEvent(Id, Name.NameFormated, Cpf.Number, Email.Address));
     }
 
     public void AddAddress(Address address)
     {
         Guard.AgainstNull(address, nameof(address));
-        
+
         _addresses.Add(address);
-        
+
         SetModifiedAt();
     }
 
     public void RemoveAddress(Guid addressId)
     {
         var address = _addresses.FirstOrDefault(b => b.Id == addressId);
-        
+
         Guard.AgainstNull(address, nameof(address));
         Guard.Against<DomainException>(_addresses.Count == 1, "Cannot remove address from existing address");
-        
+
         _addresses.Remove(address!);
 
         if (addressId == MainAddressId)
         {
             MainAddressId = _addresses.First().Id;
-            
+
             AddDomainEvent(new MainAddressChangedEvent(Id, MainAddressId));
         }
-        
+
         SetModifiedAt();
     }
-    
+
     public void UpdateAddress(
         Guid addressId,
         string cep,
@@ -87,22 +87,22 @@ public sealed class Customer : AggregateRoot
         string country)
     {
         var address = _addresses.FirstOrDefault(b => b.Id == addressId);
-        
+
         Guard.AgainstNull(address, nameof(address));
 
         address!.Update(cep, street, neighborhood, city, state, country);
-        
+
         SetModifiedAt();
     }
-    
+
     public void SetMainAddress(Guid addressId)
     {
         var address = _addresses.FirstOrDefault(b => b.Id == addressId);
-        
+
         Guard.AgainstNull(address, nameof(address));
-        
+
         MainAddressId = address!.Id;
-        
+
         AddDomainEvent(new MainAddressChangedEvent(Id, MainAddressId));
         SetModifiedAt();
     }
@@ -138,9 +138,9 @@ public sealed class Customer : AggregateRoot
     public void Block()
     {
         if (Status == CustomerStatus.Blocked) return;
-        
+
         Status = CustomerStatus.Blocked;
-        
+
         AddDomainEvent(new CustomerBlockedEvent(Id, Cpf.Number));
         SetModifiedAt();
     }

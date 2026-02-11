@@ -4,7 +4,7 @@ using Vendas.Domain.Common.Validation;
 
 namespace Vendas.Domain.Catalog.ValueObjects;
 
-public class ProductPrice: ValueObject
+public class ProductPrice : ValueObject
 {
     public decimal Value { get; }
 

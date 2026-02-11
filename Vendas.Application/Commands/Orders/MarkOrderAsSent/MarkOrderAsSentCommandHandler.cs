@@ -15,13 +15,13 @@ public sealed class MarkOrderAsSentCommandHandler : ICommandHandler<MarkOrderAsS
     public async Task<MarkOrderAsSentResultDto> HandleAsync(MarkOrderAsSentCommand command,
         CancellationToken cancellationToken)
     {
-        var order = await _orderRepository.GetOrderAsync(command.OrderId, cancellationToken) ?? 
+        var order = await _orderRepository.GetOrderAsync(command.OrderId, cancellationToken) ??
                     throw new ArgumentNullException($"Order with id {command.OrderId} not found");
-        
+
         order.MarkAsSent();
 
         await _orderRepository.UpdateOrderAsync(order, cancellationToken);
-        
+
         return new MarkOrderAsSentResultDto(order.Id, order.Status.ToString());
     }
 }

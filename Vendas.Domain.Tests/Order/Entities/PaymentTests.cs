@@ -7,7 +7,7 @@ using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Events;
 using Vendas.Domain.Orders.Entities;
 
-namespace Vendas.Domain.Tests.Entities;
+namespace Vendas.Domain.Tests.Order.Entities;
 
 public class PaymentTests
 {
@@ -20,8 +20,8 @@ public class PaymentTests
     public void Create_ShouldCreatedPayment_WhenDataIsValid()
     {
         var orderId = Guid.NewGuid();
-        var paymentMethod = PaymentMethod.BankTransfer;
-        var price = 100m;
+        const PaymentMethod paymentMethod = PaymentMethod.BankTransfer;
+        const decimal price = 100m;
 
         var payment = Payment.Create(orderId, paymentMethod, price);
 

@@ -6,4 +6,4 @@ public sealed record CustomerRegisterEvent(
     Guid CustomerId,
     string Nome,
     string Cpf,
-    string Email): DomainEventBase;
+    string Email) : DomainEventBase;
