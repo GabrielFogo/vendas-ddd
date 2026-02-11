@@ -5,7 +5,7 @@ using Vendas.Domain.Catalog.ValueObjects;
 using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Common.Validation;
 
-namespace Vendas.Application.Commands.CatalogCommands.ProductCommands;
+namespace Vendas.Application.Commands.CatalogCommands.ProductCommands.CreateProduct;
 
 public sealed class CreateProductCommandHandler(
     ICategoryRepository categoryRepository,
@@ -32,7 +32,7 @@ public sealed class CreateProductCommandHandler(
             command.InitialStock,
             command.Description);
 
-        await productRepository.AddAsync(product);
+        await productRepository.AddProductAsync(product, cancellationToken);
 
         return new CreateProductResultDto(
             product.Id,

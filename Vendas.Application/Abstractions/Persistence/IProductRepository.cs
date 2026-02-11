@@ -4,5 +4,7 @@ namespace Vendas.Application.Abstractions.Persistence;
 
 public interface IProductRepository
 {
-    public Task AddAsync(Product product);
+    public Task<Product?> GetProductByIdAsync(Guid id, CancellationToken cancellationToken);
+    public Task AddProductAsync(Product product, CancellationToken cancellationToken);
+    public Task UpdateProductAsync(Product product, CancellationToken cancellationToken);
 }

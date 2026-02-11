@@ -1,4 +1,4 @@
-namespace Vendas.Application.Commands.CatalogCommands.ProductCommands;
+namespace Vendas.Application.Commands.CatalogCommands.ProductCommands.CreateProduct;
 
 public sealed record CreateProductCommand(
     string Name,
